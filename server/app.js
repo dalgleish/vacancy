@@ -1,11 +1,14 @@
 var express = require('express');
 var http = require('http');
 var util = require('util');
+var bodyParser = require('body-parser')
 
 var port = 8081;
 var status;
 
 var app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.post('/men', function(req, res) {
   if (req.body.status) {
