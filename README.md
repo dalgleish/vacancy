@@ -83,3 +83,16 @@ Currently this is a single page app: `GET localhost:8081` will serve **server/pu
 
 Uses Twitter bootstrap, jQuery & socket.io.
 
+
+### Notes
+
+Andrew's Macbook
+IP:  10.128.0.224
+MAC: 28:cf:e9:20:3c:eb
+
+CuHead Wifi
+IP:  10.128.0.181
+MAC: 00:1e:c0:04:ca:e1
+
+To change OSX MAC  
+`sudo ifconfig en0 ether XX:XX:XX:XX:XX:XX`
