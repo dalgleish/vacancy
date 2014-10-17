@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="assets/ico/favicon.png">
+    <link rel="shortcut icon" href="ico/favicon.png">
 
     <title>Washroom Status</title>
 
@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/main.css" rel="stylesheet">
-    <link href="assets/css/colors/color-74c9be.css" rel="stylesheet">
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/colors/color-74c9be.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/icomoon.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 
@@ -34,11 +35,10 @@
         <div class="col-lg-8 col-lg-offset-2 mt">
           <h1 >Washroom Status</h1>
             <p class="mt">
-              <button id="men" type="button" class="btn btn-block btn-lg btn-success">Men</button>
-              <button id="women" type="button" class="btn btn-block btn-lg btn-default disabled">Women</button>
+              <button id="men" type="button" class="btn btn-block btn-success icon-men" style="font-size:800%">Vacant</button>
+              <button id="women" type="button" class="btn btn-block btn-default icon-women disabled"  style="font-size:800%">Offline</button>
             </p>
         </div>
-
       </div><!-- /row -->
       </div><!-- /container -->
     </div> <!-- /headerwrap -->
@@ -63,31 +63,31 @@
 
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="assets/js/retina.js"></script>
+    <script src="js/retina.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 
     <script>
       var io = io.connect();
 
       io.on('reserved:men', function(data) {
-        console.log('reserved:men');
         $('#men')
-          .removeClass('btn-success')
-          .addClass('btn-warning disabled');
+          .removeClass('btn-success icon-men')
+          .addClass('icon-men2 btn-warning disabled')
+          .html('Reserved');
       });
 
       io.on('vacant:men', function(data) {
-        console.log('vacant:men');
         $('#men')
-          .removeClass('btn-danger btn-warning disabled')
-          .addClass('btn-success');
+          .removeClass('btn-danger btn-warning disabled icon-men2')
+          .addClass('btn-success icon-men')
+          .html('Vacant');
       });
 
       io.on('occupied:men', function(data) {
-        console.log('occupied:men');
         $('#men')
-          .removeClass('btn-success btn-warning')
-          .addClass('btn-danger disabled');
+          .removeClass('btn-success btn-warning icon-men')
+          .addClass('btn-danger disabled icon-men2')
+          .html('Occupied');
       });
 
       $('#men').click(function () {
